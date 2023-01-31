@@ -14,6 +14,9 @@ yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 
+# sdk config
+sdk-config.json
+
 # Editor directories and files
 .vscode/*
 !.vscode/settings.json
