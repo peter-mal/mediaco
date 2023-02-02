@@ -49,7 +49,7 @@ module.exports = (env, argv) => {
           to: './'
         },
         {
-          from: './assets/css/*',
+          from: './assets/fonts/*',
           to: './'
         },
         {
@@ -111,7 +111,7 @@ module.exports = (env, argv) => {
     const liveReloadOptions = {
       protocol: 'http',
       appendScriptTag: true,
-      delay: 1000,
+      delay: 400,
       hostname: 'localhost'
     };
     pluginsToAdd.push(new LiveReloadPlugin(liveReloadOptions));

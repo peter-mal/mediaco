@@ -7,19 +7,19 @@
 
     "mashupClient_comment": "Client ID and Client secret from the OAuth 2.0 Client Registration record used for mashup use case",
     "mashupClient_comment2": "See SDK Guide for instructions on how to generate and obtain the proper values for the following entries",
-    "mashupClientId": "25795373220702300272",
-    "mashupUserIdentifier": "customer@mediaco",
-    "mashupPassword": "",
+    "mashupClientId": "33085241886766186699",
+    "mashupUserIdentifier": "customer@ChildBen",
+    "mashupPassword": "cGVnYS5kZW0w",
 
     "portalClientId_comment": "Client ID from the OAuth 2.0 Client Registration record used for portal use case",
-    "portalClientId": "25795373220702300272"
+    "portalClientId": ""
   },
   "serverConfig": {
     "infinityRestServerUrl_comment": "Full path to Infinity REST server",
-    "infinityRestServerUrl": "https://localhost:1080/prweb",
+    "infinityRestServerUrl": "https://hmrc-adviserui-stg2.pegacloud.net/prweb/",
 
     "appAlias_comment": "appAlias of the application which operators will be accessing (e.g., MediaCo)",
-    "appAlias": "",
+    "appAlias": "child-benefit",
 
     "sdkContentServerUrl_comment": "If specified, the given URL will be used. If left blank, window.location.origin will be used.",
     "sdkContentServerUrl": "",

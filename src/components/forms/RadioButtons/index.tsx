@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import {
-  Radio,
+  Radio as RadioMUI,
   RadioGroup,
   FormControl,
   FormControlLabel,
   FormLabel,
   FormHelperText
 } from '@material-ui/core';
+import {Radio, Fieldset} from 'govuk-react';
 
 import Utils from '../../../helpers/utils';
 import handleEvent from '../../../helpers/event-utils';
@@ -38,6 +39,7 @@ export default function RadioButtons(props) {
   useEffect(() => {
     // This update theSelectedButton which will update the UI to show the selected button correctly
     setSelectedButton(value);
+    console.log(JSON.stringify(theOptions));
   }, [value]);
 
   const handleChange = event => {
@@ -49,7 +51,28 @@ export default function RadioButtons(props) {
   };
 
   return (
-    <FormControl error={status === 'error'} required={required}>
+
+    <Fieldset>
+      <Fieldset.Legend>
+        {label}
+      </Fieldset.Legend>
+      <RadioGroup
+        value={theSelectedButton}
+        onChange={handleChange}
+        onBlur={!readOnly ? handleBlur : undefined}
+      >
+        {theOptions.map(theOption => {
+          return(
+            <Radio value={theOption.key} key={theOption.key} inline={theOptions.length === 2} name={propName}>
+              {theOption.value}
+            </Radio>
+          )
+        })}
+      </RadioGroup>
+    </Fieldset>
+
+
+    /*<FormControl error={status === 'error'} required={required}>
       <FormLabel component='legend'>{label}</FormLabel>
       <RadioGroup
         value={theSelectedButton}
@@ -63,12 +86,13 @@ export default function RadioButtons(props) {
               value={theOption.key}
               key={theOption.key}
               label={theOption.value}
-              control={<Radio key={theOption.key} color='primary' disabled={readOnly} />}
+              control={<RadioMUI key={theOption.key} color='primary' disabled={readOnly} />}
             />
           );
         })}
       </RadioGroup>
       <FormHelperText>{helperTextToDisplay}</FormHelperText>
-    </FormControl>
+    </FormControl>*/
+
   );
 }

@@ -1,5 +1,6 @@
 import React from 'react';
-import { TextField } from '@material-ui/core';
+import {  } from '@material-ui/core';
+import  { InputField } from 'govuk-react'
 import FieldValueList from '../../designSystemExtensions/FieldValueList';
 
 export default function TextInput(props) {
@@ -16,19 +17,28 @@ export default function TextInput(props) {
     testId,
     fieldMetadata,
     helperText,
-    displayMode
+    displayMode,
+    type
   } = props;
+
   const helperTextToDisplay = validatemessage || helperText;
 
   const maxLength = fieldMetadata?.maxLength;
 
   let readOnlyProp = {}; // Note: empty if NOT ReadOnly
 
+  var typeProp = type; //TODO Remove - after updating password field in PEGA to be password type
+
   if (displayMode === 'LABELS_LEFT') {
     const field = {
       [label]: value
     };
     return <FieldValueList item={field} />;
+  }
+
+  //TODO Remove - workaround for password field for PoC
+  if(label === "Password"){
+    typeProp = "password";
   }
 
   if (readOnly) {
@@ -42,20 +52,8 @@ export default function TextInput(props) {
   };
 
   return (
-    <TextField
-      fullWidth
-      variant={readOnly ? 'standard' : 'outlined'}
-      helperText={helperTextToDisplay}
-      placeholder=''
-      size='small'
-      required={required}
-      disabled={disabled}
-      onChange={onChange}
-      onBlur={!readOnly ? onBlur : undefined}
-      error={status === 'error'}
-      label={label}
-      value={value}
-      InputProps={{ ...readOnlyProp, inputProps: { maxLength, ...testProp } }}
-    />
+    <InputField hint = {helperText} input = {{required, disabled, value, onChange, onBlur, placeholder:"", ...readOnlyProp, type:typeProp}}>
+          {label}
+    </InputField>
   );
 }
